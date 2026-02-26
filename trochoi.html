@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Trò chơi trắc nghiệm</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#00c6ff,#f9d423,#ff4e00);
+}
+
+header{
+    text-align:center;
+    padding:30px;
+    color:white;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    background: rgba(0,0,0,0.2);
+}
+
+nav a{
+    color:white;
+    padding:15px 20px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+nav a:hover{
+    background:white;
+    color:#ff4e00;
+}
+
+.container{
+    width:80%;
+    margin:30px auto;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+button{
+    padding:10px 20px;
+    background:#ff4e00;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#e63e00;
+}
+
+#ketqua{
+    font-weight:bold;
+    margin-top:20px;
+    font-size:18px;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:white;
+    margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🎮 Trò chơi trắc nghiệm</h1>
+<p>Kiểm tra kiến thức về trường THPT An Lương Đông</p>
+</header>
+
+<nav>
+<a href="dat1 sửa.html">Trang chủ</a>
+<a href="thuvien.html">Thư viện</a>
+<a href="trochoi.html">Trò chơi</a>
+</nav>
+
+<div class="container">
+
+<form id="quizForm">
+
+<p><b>Câu 1:</b> Trường thuộc tỉnh nào?</p>
+<input type="radio" name="q1" value="0"> Đà Nẵng<br>
+<input type="radio" name="q1" value="1"> Thừa Thiên Huế<br>
+<input type="radio" name="q1" value="0"> Quảng Trị<br><br>
+
+<p><b>Câu 2:</b> Hoạt động nổi bật?</p>
+<input type="radio" name="q2" value="1"> Ngoại khóa<br>
+<input type="radio" name="q2" value="0"> Đua xe<br>
+<input type="radio" name="q2" value="0"> Leo núi<br><br>
+
+<p><b>Câu 3:</b> Phong trào thu hút?</p>
+<input type="radio" name="q3" value="0"> Câu cá<br>
+<input type="radio" name="q3" value="1"> Văn nghệ<br>
+<input type="radio" name="q3" value="0"> Ngủ trưa<br><br>
+
+<p><b>Câu 4:</b> Website giới thiệu?</p>
+<input type="radio" name="q4" value="1"> Hoạt động & phong trào<br>
+<input type="radio" name="q4" value="0"> Món ăn<br>
+<input type="radio" name="q4" value="0"> Du lịch<br><br>
+
+<p><b>Câu 5:</b> Hoạt động thể thao của trường gồm?</p>
+<input type="radio" name="q5" value="1"> Bóng đá<br>
+<input type="radio" name="q5" value="0"> Đua xe F1<br>
+<input type="radio" name="q5" value="0"> Lướt sóng<br><br>
+
+<p><b>Câu 6:</b> Trang web có mục nào sau đây?</p>
+<input type="radio" name="q6" value="1"> Thư viện ảnh<br>
+<input type="radio" name="q6" value="0"> Đặt vé máy bay<br>
+<input type="radio" name="q6" value="0"> Bán hàng online<br><br>
+
+<p><b>Câu 7:</b> Mục đích của website là?</p>
+<input type="radio" name="q7" value="1"> Giới thiệu hoạt động trường<br>
+<input type="radio" name="q7" value="0"> Chơi game trực tuyến<br>
+<input type="radio" name="q7" value="0"> Mua sắm<br><br>
+
+<p><b>Câu 8:</b> Học sinh có thể tham gia gì?</p>
+<input type="radio" name="q8" value="1"> Văn nghệ & thể thao<br>
+<input type="radio" name="q8" value="0"> Đua xe địa hình<br>
+<input type="radio" name="q8" value="0"> Lặn biển chuyên nghiệp<br><br>
+
+<button type="button" onclick="tinhDiem()">Xem kết quả</button>
+
+</form>
+
+<p id="ketqua"></p>
+
+</div>
+
+<footer>
+<p><strong>Trường THPT An Lương Đông</strong></p>
+<p>Thôn An Lương Đông, xã Lộc An, huyện Phú Lộc, TP. Huế</p>
+<p>2026</p>
+</footer>
+
+<script>
+function tinhDiem(){
+    var form = document.getElementById("quizForm");
+    var score = 0;
+
+    for(var i=1; i<=8; i++){
+        var answers = form["q"+i];
+        for(var j=0; j<answers.length; j++){
+            if(answers[j].checked){
+                score += parseInt(answers[j].value);
+            }
+        }
+    }
+
+    var message = "";
+
+    if(score >= 7){
+        message = "🌟 Xuất sắc! Bạn rất hiểu về trường THPT An Lương Đông!";
+    }
+    else if(score >= 4){
+        message = "👍 Khá tốt! Bạn đã nắm được nhiều thông tin rồi.";
+    }
+    else{
+        message = "💙 Hãy tìm hiểu thêm về trường THPT An Lương Đông nhé!";
+    }
+
+    document.getElementById("ketqua").innerHTML =
+        "Bạn đạt " + score + "/8 điểm.<br>" + message;
+}
+</script>
+
+</body>
+</html>
